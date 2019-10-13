@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Player } from './player';
-import { PLAYERS } from './mock-players';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -10,15 +9,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class PlayerService {
 
+    private baseUrl = 'http://localhost:5002';  // URL to web api
+    private playersUrl = this.baseUrl.concat('/players/all/all');
+    private playerUrl = this.baseUrl.concat('/player/');
+
     getPlayers(): Observable<Player[]> {
-	this.messageService.add("PlayerService: fetched players");
-	return of(PLAYERS);
+        return this.http.get<Player[]>(this.playersUrl)
     }
+
     getPlayer(id: number): Observable<Player> {
-	this.messageService.add(`PlayerService: fetched player id=${id}`);
-	return of(PLAYERS.find(player => player.id ===id));
+        console.log("Will fetch player", id);
+        return this.http.get<Player>(this.playerUrl.concat(id.toString()));
+
     }
     constructor(
 	private http: HttpClient,
 	private messageService: MessageService) { }
+
+    /** Log a HeroService message with the MessageService */
+    private log(message: string) {
+        this.messageService.add(`HeroService: ${message}`);
+    }
+    
 }

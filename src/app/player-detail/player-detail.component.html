@@ -1,11 +1,17 @@
 <div *ngIf="player">
 
-  <h2>{{player.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{player.id}}</div>
+  <h2>{{player.player_name | uppercase}} Details</h2>
+  <div><span>id: </span>{{player.player_id}}</div>
+  <div><span>team: </span>{{player.team}}</div>
+  <h3>Recent scores:</h3>
   <div>
-    <label>name:
-      <input [(ngModel)]="player.name" placeholder="name"/>
-    </label>
+    <li *ngFor = "let rs of player.recent_scores">
+      <span >gameweek {{rs.gameweek}}: {{rs.score}} </span>
+  </div>
+  <h3>Upcoming fixtures:</h3>
+  <div>
+    <li *ngFor = "let fix of player.fixtures">
+      <span >gameweek {{fix.gameweek}}: {{fix.opponent}} ({{fix.home_or_away}} )</span>
   </div>
 </div>
 <button (click)="goBack()">go back</button>
