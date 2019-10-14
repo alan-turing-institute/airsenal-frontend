@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Player } from './player';
+import { Player, PlayerStub } from './player';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -13,8 +13,8 @@ export class PlayerService {
     private playersUrl = this.baseUrl.concat('/players/all/all');
     private playerUrl = this.baseUrl.concat('/player/');
 
-    getPlayers(): Observable<Player[]> {
-        return this.http.get<Player[]>(this.playersUrl)
+    getPlayers(): Observable<PlayerStub[]> {
+        return this.http.get<PlayerStub[]>(this.playersUrl)
     }
 
     getPlayer(id: number): Observable<Player> {
@@ -30,5 +30,5 @@ export class PlayerService {
     private log(message: string) {
         this.messageService.add(`HeroService: ${message}`);
     }
-    
+
 }
