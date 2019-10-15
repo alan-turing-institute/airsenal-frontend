@@ -9,7 +9,10 @@ export interface Position {
   viewValue: string;
 }
 
-
+export interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-players',
@@ -46,5 +49,9 @@ export class PlayersComponent implements OnInit {
 	{value: "MID", viewValue: "MID"},
 	{value: "FWD", viewValue: "FWD"}
     ]
-
+    foods: Food[] = [
+	{value: 'steak-0', viewValue: 'Steak'},
+	{value: 'pizza-1', viewValue: 'Pizza'},
+	{value: 'tacos-2', viewValue: 'Tacos'}
+    ];
 }

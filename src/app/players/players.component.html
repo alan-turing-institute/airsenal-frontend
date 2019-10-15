@@ -1,6 +1,10 @@
 <h2>my players</h2>
 <ul class="players">
-<mat-form-field>
+  <div class="dropdownholder">
+
+
+<div class="form2">
+  <mat-form-field>
   <mat-label>Select team</mat-label>
   <mat-select>
     <mat-option *ngFor="let team of teams" [value]="team.name">
@@ -8,7 +12,8 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-
+</div>
+</div>
 <mat-form-field>
   <mat-label>Select position</mat-label>
   <mat-select>
