@@ -20,6 +20,11 @@ export class PlayerStub {
     name: string;
 }
 
+export class TeamStub {
+    name: string;
+    full_name: string;
+}
+
 export class Player {
     player_id: number;
     player_name: string;

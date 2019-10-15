@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerStub } from '../player';
+import { PlayerStub, TeamStub } from '../player';
 import { PlayerService } from '../player.service';
+import { MatSelectModule } from '@angular/material/select';
+
+
+export interface Position {
+  value: string;
+  viewValue: string;
+}
+
+
 
 @Component({
   selector: 'app-players',
@@ -10,18 +19,32 @@ import { PlayerService } from '../player.service';
 
 export class PlayersComponent implements OnInit {
     players: PlayerStub[];
+    teams: TeamStub[];
 
     constructor(private playerService: PlayerService) { }
 
-    getPlayers(): void {
-	this.playerService.getPlayers()
+    getPlayers(selectedTeam: string, selectedPos: string): void {
+	this.playerService.getPlayers(selectedTeam,
+				      selectedPos)
 	    .subscribe(players => this.players = players);
+    }
+
+    getTeams(): void {
+	this.playerService.getTeams()
+	    .subscribe(teams => this.teams = teams);
     }
 
 
     ngOnInit() {
-	this.getPlayers();
+	this.getPlayers("all", "all");
+	this.getTeams();
     }
 
+    positions: Position[] = [
+	{value: "GK", viewValue: "GK"},
+	{value: "DEF", viewValue: "DEF"},
+	{value: "MID", viewValue: "MID"},
+	{value: "FWD", viewValue: "FWD"}
+    ]
 
 }

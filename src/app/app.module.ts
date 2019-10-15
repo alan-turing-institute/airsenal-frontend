@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <- NgModel
-
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { PlayersComponent } from './players/players.component';
 import { PlayerDetailComponent } from './player-detail/player-detail.component';
@@ -12,20 +13,22 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PlayersComponent,
-    PlayerDetailComponent,
-    MessagesComponent,
-    DashboardComponent
-  ],
-  imports: [
-      BrowserModule,
-      FormsModule,
-      AppRoutingModule,
-      HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+	AppComponent,
+	PlayersComponent,
+	PlayerDetailComponent,
+	MessagesComponent,
+	DashboardComponent
+    ],
+    imports: [
+	BrowserModule,
+	FormsModule,
+	AppRoutingModule,
+	HttpClientModule,
+	MatSelectModule,
+	BrowserAnimationsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
