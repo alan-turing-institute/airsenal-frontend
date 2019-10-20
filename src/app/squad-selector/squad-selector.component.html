@@ -1,0 +1,38 @@
+<h2>Select players</h2>
+<ul class="squad-selector">
+  <div class="dropdownholder">
+  <mat-form-field>
+  <mat-label>Select team</mat-label>
+  <mat-select [(ngModel)]="selectedTeam"  (valueChange)="refreshPlayers($event)">
+    <mat-option *ngFor="let team of teams" [value]="team.name" >
+      {{team.full_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Select position</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let position of positions" [value]="position.value">
+      {{position.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Select player</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let player of players" [value]="player.name">
+      {{player.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  <button class="select"
+	  (click)="squadService.addToSquad()">Add player</button>
+  </div>
+  <div>
+    <label>OR enter FPL team ID:
+    <input [(ngModel)]="teamId" placeholder="Team ID"/>
+    </label>
+       <button class="select"
+	  (click)="squadService.fillSquad()">Submit</button>
+  </div>
+</ul>

@@ -43,3 +43,6 @@ testem.log
 .DS_Store
 Thumbs.db
 !.gitkeep
+
+#emacs autosave
+*~

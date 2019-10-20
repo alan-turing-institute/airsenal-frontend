@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <- NgModel
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { PlayersComponent } from './players/players.component';
@@ -11,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientModule }    from '@angular/common/http';
+import { SquadComponent } from './squad/squad.component';
+import { SquadSelectorComponent } from './squad-selector/squad-selector.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +21,9 @@ import { HttpClientModule }    from '@angular/common/http';
 	PlayersComponent,
 	PlayerDetailComponent,
 	MessagesComponent,
-	DashboardComponent
+	DashboardComponent,
+	SquadComponent,
+	SquadSelectorComponent
     ],
     imports: [
 	BrowserModule,
@@ -26,6 +31,7 @@ import { HttpClientModule }    from '@angular/common/http';
 	AppRoutingModule,
 	HttpClientModule,
 	MatSelectModule,
+	MatInputModule,
 	BrowserAnimationsModule
     ],
     providers: [],
