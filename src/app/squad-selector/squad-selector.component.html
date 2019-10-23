@@ -4,7 +4,7 @@
   <mat-form-field>
   <mat-label>Select team</mat-label>
   <mat-select [(ngModel)]="selectedTeam"  (valueChange)="refreshPlayers($event)">
-    <mat-option *ngFor="let team of teams" [value]="team.name" >
+    <mat-option *ngFor="let team of teams" [value]="team" >
       {{team.full_name}}
     </mat-option>
   </mat-select>
@@ -19,20 +19,20 @@
 </mat-form-field>
 <mat-form-field>
   <mat-label>Select player</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let player of players" [value]="player.name">
+  <mat-select [(ngModel)]="selectedPlayer" (valueChange)="refreshPlayer($event)">
+    <mat-option *ngFor="let player of players" [value]="player">
       {{player.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-  <button class="select"
-	  (click)="squadService.addToSquad()">Add player</button>
+   <button class="select-player"
+	  (click)="updateSquad()">Add player</button>
   </div>
   <div>
     <label>OR enter FPL team ID:
-    <input [(ngModel)]="teamId" placeholder="Team ID"/>
+    <input [(ngModel)]="team_id" placeholder="Team ID"/>
     </label>
-       <button class="select"
-	  (click)="squadService.fillSquad()">Submit</button>
+       <button class="select-team"
+	  (click)="squadService.fillSquad(team_id)">Submit</button>
   </div>
 </ul>

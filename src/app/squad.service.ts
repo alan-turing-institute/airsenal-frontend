@@ -14,19 +14,21 @@ export class SquadService {
     private squadUrl = this.baseUrl.concat('/team/');
     private playersUrl = this.baseUrl.concat('/team/list');
 
-    resetSquad(): void {
+    resetSquad(): Observable<Object> {
 	console.log("Resetting squad");
 	return this.http.get(this.squadUrl.concat("new"));
     }
 
-    addToSquad(playerId: number): void {
+    addToSquad(playerId: number): Observable<Object> {
 	console.log("Adding player", playerId);
-	return this.http.get(this.squadUrl.concat('/add/').concat(playerId));
+	return this.http.get(this.squadUrl.concat('/add/').concat(playerId.toString()));
     }
 
-    fillSquad(teamId: number): void {
-	console.log("Adding player", teamId);
-	return this.http.get(this.squadUrl.concat('/fill/').concat(teamId));
+    fillSquad(teamId: number): Observable<Object> {
+	console.log("Adding team", teamId);
+	var URL = this.squadUrl.concat('fill/').concat(teamId.toString())
+	console.log("yo", URL)
+	return this.http.get(URL);
     }
 
     getPlayers(): Observable<PlayerStub[]> {
