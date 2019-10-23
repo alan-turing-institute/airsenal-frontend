@@ -1,11 +1,12 @@
 # airsenal-frontend
 Angular app to interact with the airsenal API
 
-To install and run the frontend, clone the repo, then do 
+To install and run the frontend, clone the repo, then do
 ```
 npm install
+npm install -g @angular/cli
 ```
-then it should run with 
+then it should run with
 ```
 npm start
 ```
