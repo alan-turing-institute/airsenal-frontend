@@ -11,7 +11,7 @@
 </mat-form-field>
 <mat-form-field>
   <mat-label>Select position</mat-label>
-  <mat-select>
+  <mat-select [(ngModel)]="selectedPos" (valueChange)="refreshPosition($event)">
     <mat-option *ngFor="let position of positions" [value]="position.value">
       {{position.viewValue}}
     </mat-option>

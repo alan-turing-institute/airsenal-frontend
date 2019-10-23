@@ -56,7 +56,13 @@ export class SquadSelectorComponent implements OnInit {
 	this.selectedTeam = newSelectedTeam
 	console.log("Refreshing players for team: ", this.selectedTeam)
 	this.getPlayers(this.selectedTeam.name, this.selectedPos);
-    }
+	}
+	
+	refreshPosition( newSelectedPosition: string ) {
+		console.log("New selected position: "+JSON.stringify(newSelectedPosition))
+		this.selectedPos = newSelectedPosition;
+		this.getPlayers(this.selectedTeam.name, this.selectedPos)
+	}
 
     refreshPlayer(selectedPlayer) {
 	console.log(selectedPlayer.name)
