@@ -96,6 +96,10 @@ export class SquadSelectorComponent implements OnInit {
       .subscribe();
     }
 
+    resetSquad(): void {
+	this.squadService.resetSquad()
+      .subscribe();
+    }
 
     ngOnInit() {
         this.getTeams();
