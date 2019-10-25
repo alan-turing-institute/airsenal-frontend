@@ -25,7 +25,6 @@ export class SquadSelectorComponent implements OnInit {
     selectedPlayer: PlayerStub;
     //selectedPlayer: string;
     teamId: number;
-    team: number[];
 
     positions: Position[] = [
 	{value: "all", viewValue: "all"},
@@ -86,18 +85,15 @@ export class SquadSelectorComponent implements OnInit {
     updateSquad(): void {
 	console.log("Updating Squad with: ".concat(this.selectedPlayer.name))
 
-	this.squadService.addToSquad(this.selectedPlayer.id);
+	this.squadService.addToSquad(this.selectedPlayer.id)
+    .subscribe();
     }
 
 
     fillSquad(team_id: number): void {
 	console.log("Team ID is ", team_id);
-	this.squadService.fillSquad(team_id).
-      subscribe(
-          team => {
-            this.team = team
-          }
-      );
+	this.squadService.fillSquad(team_id)
+      .subscribe();
     }
 
 
