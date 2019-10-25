@@ -21,14 +21,14 @@ export class SquadService {
 
     addToSquad(playerId: number): Observable<Object> {
 	console.log("Adding player", playerId);
-	return this.http.get(this.squadUrl.concat('/add/').concat(playerId.toString()));
+	return this.http.get<Boolean>(this.squadUrl.concat('add/').concat(playerId.toString()));
     }
 
     fillSquad(teamId: number): Observable<Object> {
 	console.log("Adding team", teamId);
-	var URL = this.squadUrl.concat('fill/').concat(teamId.toString())
-	console.log("yo", URL)
-	return this.http.get(URL);
+	var URL = this.squadUrl.concat('fill/').concat(teamId.toString());
+	console.log("yo", URL);
+	return this.http.get<number[]>(URL);
     }
 
     getPlayers(): Observable<PlayerStub[]> {

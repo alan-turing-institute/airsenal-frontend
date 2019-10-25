@@ -33,6 +33,10 @@
     <input [(ngModel)]="team_id" placeholder="Team ID"/>
     </label>
        <button class="select-team"
-	  (click)="squadService.fillSquad(team_id)">Submit</button>
+	  (click)="fillSquad(team_id)">Submit</button>
+  </div>
+  <div>
+    <button class="reset-team"
+ (click)="resetSquad()">Reset</button>
   </div>
 </ul>

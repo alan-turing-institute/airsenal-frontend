@@ -57,7 +57,7 @@ export class SquadSelectorComponent implements OnInit {
 	console.log("Refreshing players for team: ", this.selectedTeam)
 	this.getPlayers(this.selectedTeam.name, this.selectedPos);
 	}
-	
+
 	refreshPosition( newSelectedPosition: string ) {
 		console.log("New selected position: "+JSON.stringify(newSelectedPosition))
 		this.selectedPos = newSelectedPosition;
@@ -85,15 +85,21 @@ export class SquadSelectorComponent implements OnInit {
     updateSquad(): void {
 	console.log("Updating Squad with: ".concat(this.selectedPlayer.name))
 
-	this.squadService.addToSquad(this.selectedPlayer.id);
+	this.squadService.addToSquad(this.selectedPlayer.id)
+    .subscribe();
     }
 
 
     fillSquad(team_id: number): void {
 	console.log("Team ID is ", team_id);
-	this.squadService.fillSquad(team_id);
+	this.squadService.fillSquad(team_id)
+      .subscribe();
     }
 
+    resetSquad(): void {
+	this.squadService.resetSquad()
+      .subscribe();
+    }
 
     ngOnInit() {
         this.getTeams();
