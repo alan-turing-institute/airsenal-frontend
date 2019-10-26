@@ -25,5 +25,16 @@ export class SquadComponent implements OnInit {
 	    .subscribe(players => this.players = players);
     }
 
+    removePlayer(player: PlayerStub): void {
+	this.squadService.removeFromSquad(player.id)
+	    .subscribe();
+	this.getPlayers();
 
+    }
+
+    resetSquad(): void {
+	this.squadService.resetSquad()
+	    .subscribe();
+	this.getPlayers();
+    }
 }

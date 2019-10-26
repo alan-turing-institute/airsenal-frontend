@@ -51,23 +51,19 @@ export class SquadSelectorComponent implements OnInit {
     }
 
 
-    refreshPlayers( newSelectedTeam:TeamStub ) {
-	console.log("New selected team: "+JSON.stringify(newSelectedTeam))
-	this.selectedTeam = newSelectedTeam
+    refreshPlayers( selectedTeam: TeamStub ) {
+	this.selectedTeam = selectedTeam
 	console.log("Refreshing players for team: ", this.selectedTeam)
 	this.getPlayers(this.selectedTeam.name, this.selectedPos);
-	}
+    }
 
-	refreshPosition( newSelectedPosition: string ) {
-		console.log("New selected position: "+JSON.stringify(newSelectedPosition))
-		this.selectedPos = newSelectedPosition;
-		this.getPlayers(this.selectedTeam.name, this.selectedPos)
-	}
+    refreshPosition( selectedPosition: string ) {
+	this.selectedPos = selectedPosition;
+	this.getPlayers(this.selectedTeam.name, this.selectedPos)
+    }
 
     refreshPlayer(selectedPlayer) {
 	console.log(selectedPlayer.name)
-	//console.log("Passed UpdateSelectedPlayer: ".concat(newPlayer.name))
-	//console.log("UpdateSelectedPlayer: ".concat(this.selectedPlayer.name))
 	this.selectedPlayer = selectedPlayer
     }
 
@@ -86,7 +82,7 @@ export class SquadSelectorComponent implements OnInit {
 	console.log("Updating Squad with: ".concat(this.selectedPlayer.name))
 
 	this.squadService.addToSquad(this.selectedPlayer.id)
-    .subscribe();
+	    .subscribe();
     }
 
 

@@ -24,6 +24,12 @@ export class SquadService {
 	return this.http.get<Boolean>(this.squadUrl.concat('add/').concat(playerId.toString()));
     }
 
+    removeFromSquad(playerId: number): Observable<Object> {
+	console.log("removing player", playerId);
+	return this.http.get<Boolean>(this.squadUrl.concat('remove/').concat(playerId.toString()));
+    }
+
+
     fillSquad(teamId: number): Observable<Object> {
 	console.log("Adding team", teamId);
 	var URL = this.squadUrl.concat('fill/').concat(teamId.toString());

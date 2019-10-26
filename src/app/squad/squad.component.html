@@ -4,5 +4,11 @@
   <a routerLink="/detail/{{player.id}}">
     <span class="badge">{{player.id}}</span> {{player.name}}
   </a>
+  <button class="remove-player"
+	  (click)="removePlayer(player)">X</button>
 </li>
 </ul>
+  <div>
+    <button class="reset-team"
+ (click)="resetSquad()">Reset</button>
+  </div>
